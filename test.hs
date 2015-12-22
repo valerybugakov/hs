@@ -2,6 +2,7 @@ import Text.Read
 import System.Environment
 import Data.List
 import Control.Parallel.Strategies
+import System.Exit
 
 -- main :: IO ()
 main = do
@@ -16,7 +17,8 @@ main = do
     -- mapM putStrLn $ zipWith myCheck "asd" "asf"
     -- [ (i,j) | i <- (lines f1'), j <- (lines f2')]
     -- mapM print $ zipWith (\a b -> a == b) (lines f1') (lines f2')
-    mapM print $ zipWith foo (lines f1') (lines f2')
+    mapM bar $ zipWith compareLines (lines f1') (lines f2')
+    putStrLn "\n\n Success \n\n"
 
     -- putStr f1'
     -- putStrLn "---------------"
@@ -27,9 +29,12 @@ main = do
     -- mapM putStrLn f
 
 -- foo :: String -> String -> IO Bool
-foo a b = a == b
-    -- putStrLn a
-    -- print b
+-- foo a b = a == b
+bar a = a
+compareLines s1 s2 =
+    case s1 == s2 of
+      True -> return()
+      False -> putStrLn "\n\n Failure, files are not identical \n\n" >> exitFailure
 
 -- myCheck :: String -> Bool
 -- myCheck str str2 = do
