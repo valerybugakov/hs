@@ -1,3 +1,9 @@
+{-
+  Compare two files line by line.
+  Two threads read files line by line.
+  After that the 3rd one can compare received strings.
+-}
+
 import Text.Read
 import System.Environment
 import Data.List

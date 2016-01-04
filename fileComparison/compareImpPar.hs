@@ -38,12 +38,3 @@ compareLines s1 s2 =
     case s1 == s2 of
       True -> return()
       False -> putStrLn "\n\n Failure, files are not identical \n\n" >> exitFailure
-
-rnd :: (RandomGen g) => Rand g Int
-rnd = getRandomR (65,90)
-
--- compareLines strings = do
---     True
-    -- fst strings == snd strings
-
-
